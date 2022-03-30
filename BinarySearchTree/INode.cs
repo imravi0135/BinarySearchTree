@@ -9,13 +9,14 @@ namespace BinarySearchTree
     public class INode<T>
     {
         public T data;
-        public INode<T> leftTree;
-        public INode<T> rightTree;
+        internal INode<T> left;
+        internal INode<T> right;
+
         public INode(T data)
         {
             this.data = data;
-            leftTree = null;
-            rightTree = null;
+            this.left = null;
+            this.right = null;
         }
     }
 }
