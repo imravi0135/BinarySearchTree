@@ -9,7 +9,7 @@ namespace BinarySearchTree
     public class MyBinaryTree<T> where T : IComparable
     {
         public INode<T> root;
-       
+
         public void CreateNode(T value)
         {
             INode<T> newNode = new INode<T>(value);
@@ -54,7 +54,7 @@ namespace BinarySearchTree
                 break;
             } while (root != null);
         }
-       
+
         /// Displays Nodes in BST
         public void Display(INode<T> parent)
         {
@@ -65,12 +65,6 @@ namespace BinarySearchTree
                 Console.WriteLine("{0} is BST Node", parent.data);
             }
         }
-
-        private void Display(object right)
-        {
-            throw new NotImplementedException();
-        }
-
         public int Size(INode<T> root)
         {
             if (root == null)
@@ -78,6 +72,26 @@ namespace BinarySearchTree
             else
                 return Size(root.left) + 1 + Size(root.right);
         }
+        public bool Search(INode<T> root, T key)
+        {
 
+            if (root == null)
+            {
+                return false;
+            }
+            if (root.data.CompareTo(key) == 0)
+            {
+                return true;
+            }
+            else if (root.data.CompareTo(key) > 0)
+            {
+                return Search(root.left, key);
+            }
+            else
+            {
+                return Search(root.right, key);
+            }
+
+        }
     }
 }
